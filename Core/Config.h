@@ -186,6 +186,7 @@ public:
 	int iWindowHeight;
 
 	bool bVertexCache;
+	bool bOptimizeRepeatDraws;
 	bool bTextureBackoffCache;
 	bool bTextureSecondaryCache;
 	bool bVertexDecoderJit;
