@@ -570,7 +570,7 @@ void GPUCommon::DumpNextFrame() {
 }
 
 u32 GPUCommon::DrawSync(int mode) {
-	drawEngineCommon_->DrawSync();
+	drawEngineCommon_->ResetPrevDraw();
 
 	if (mode < 0 || mode > 1)
 		return SCE_KERNEL_ERROR_INVALID_MODE;
@@ -620,7 +620,7 @@ void GPUCommon::CheckDrawSync() {
 }
 
 int GPUCommon::ListSync(int listid, int mode) {
-	drawEngineCommon_->DrawSync();
+	drawEngineCommon_->ResetPrevDraw();
 
 	if (listid < 0 || listid >= DisplayListMaxCount)
 		return SCE_KERNEL_ERROR_INVALID_ID;

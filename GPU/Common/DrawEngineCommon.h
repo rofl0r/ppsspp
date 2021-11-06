@@ -73,7 +73,7 @@ public:
 		SubmitPrim(verts, inds, prim, vertexCount, vertTypeID, cullMode, bytesRead);
 	}
 
-	virtual void DrawSync() {}
+	virtual void ResetPrevDraw() { prevDcid_ = 0; }
 
 	bool TestBoundingBox(void* control_points, int vertexCount, u32 vertType, int *bytesRead);
 
