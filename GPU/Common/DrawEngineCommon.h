@@ -73,6 +73,8 @@ public:
 		SubmitPrim(verts, inds, prim, vertexCount, vertTypeID, cullMode, bytesRead);
 	}
 
+	virtual void DrawSync() {}
+
 	bool TestBoundingBox(void* control_points, int vertexCount, u32 vertType, int *bytesRead);
 
 	void SubmitPrim(void *verts, void *inds, GEPrimitiveType prim, int vertexCount, u32 vertTypeID, int cullMode, int *bytesRead);
@@ -164,6 +166,7 @@ protected:
 	int decimationCounter_ = 0;
 	int decodeCounter_ = 0;
 	u32 dcid_ = 0;
+	u32 prevDcid_ = 0;
 
 	// Vertex collector state
 	IndexGenerator indexGen;
