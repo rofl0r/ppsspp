@@ -21,6 +21,7 @@ enum {
 enum class VKRRenderCommand : uint8_t {
 	REMOVED,
 	BIND_PIPELINE,
+	BIND_VERTEX_DATA,
 	STENCIL,
 	BLEND,
 	VIEWPORT,
@@ -46,12 +47,17 @@ struct VkRenderData {
 			VkPipeline pipeline;
 		} pipeline;
 		struct {
+			VkBuffer vbuffer;
+			VkDeviceSize voffset;
+			VkBuffer ibuffer;
+			VkDeviceSize ioffset;
+			VkIndexType indexType;
+		} vertexdata;
+		struct {
 			VkPipelineLayout pipelineLayout;
 			VkDescriptorSet ds;
 			int numUboOffsets;
 			uint32_t uboOffsets[3];
-			VkBuffer vbuffer;
-			VkDeviceSize voffset;
 			uint32_t count;
 			uint32_t offset;
 		} draw;
@@ -60,13 +66,8 @@ struct VkRenderData {
 			VkDescriptorSet ds;
 			int numUboOffsets;
 			uint32_t uboOffsets[3];
-			VkBuffer vbuffer;  // might need to increase at some point
-			VkDeviceSize voffset;
-			VkBuffer ibuffer;
-			VkDeviceSize ioffset;
 			uint32_t count;
 			int16_t instances;
-			VkIndexType indexType;
 		} drawIndexed;
 		struct {
 			uint32_t clearColor;
